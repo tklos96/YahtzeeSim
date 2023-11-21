@@ -6,7 +6,7 @@
 
 
 int main() {
-    const int nTrials = 500;
+    const int nTrials = 1000;
     const int nLogSteps = 10;
 
     //Set up session
@@ -21,7 +21,7 @@ int main() {
     std::cout << "Standard Yahtzee\n";
     std::cout << "nTrials=" << nTrials << "\n";
     std::cout << "trials,nYahtzee,nFourOfAKind,winnings\n";
-    int l=0;
+    int l=1;
     int nYahtzee=0, nFourOfAKind=0;
     int winnings = 0;
     for(int n=0; n<nTrials; ++n) {
@@ -38,7 +38,7 @@ int main() {
             rollCountsFair[i] += game.getRollCount(i+1);
         }
 
-        if(n==nTrials-1 or n>= l*(nTrials/nLogSteps)) {
+        if(n==nTrials-1 or n>= (l*nTrials/nLogSteps-1)) {
             l++;
             std::cout << n+1 <<","<< nYahtzee <<","<<nFourOfAKind<<","<<winnings;
             std::cout << "\n";
@@ -53,7 +53,7 @@ int main() {
     std::cout << "FunYahtzee\n";
     std::cout << "nTrials=" <<nTrials <<"\n";
     std::cout << "trials,nYahtzee,nFourOfAKind,winnings\n";
-    int l=0;
+    int l=1;
     int nYahtzee=0, nFourOfAKind=0;
     int winnings=0;
     for(int n=0; n<nTrials; ++n) {
@@ -70,7 +70,7 @@ int main() {
             rollCountsFixed[i] += game.getRollCount(i+1);
         }
 
-        if(n==nTrials-1 or n>= l*nTrials/nLogSteps) {
+        if(n==nTrials-1 or n>= (l*nTrials/nLogSteps-1)) {
             l++;
             std::cout << n+1 <<","<< nYahtzee <<","<<nFourOfAKind<<","<<winnings;
             std::cout << "\n";

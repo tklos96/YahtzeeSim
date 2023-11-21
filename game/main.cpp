@@ -22,9 +22,8 @@ int main() {
     std::cin >> gameNum;
     if(gameNum==2) fun=true;
     else fun=false;
+    std::cout << "\n==============================\n" << std::endl;
 
-    //Set up session
-    //auto dist = std::uniform_int_distribution(0,6);
     int winnings = 0;
 
     std::string cont = "y";
@@ -60,6 +59,7 @@ int main() {
         std::cout << "Your total winnings: $" << winnings << std::endl;
         std::cout << "Continue playing? (y/n) ";
         std::cin >> cont;
+        std::cout << "\n==============================\n" << std::endl;
 
     }
 

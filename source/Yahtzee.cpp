@@ -51,10 +51,12 @@ int const Yahtzee::payout() {
 
 std::string const Yahtzee::printDice() {
     std::ostringstream s;
+    s << " _ _ _ _ _\n";
     s << "|";
     for(auto die : dice_) {
         s << die << "|";
     }
+    s << "\n ‾ ‾ ‾ ‾ ‾";
     return s.str();
 }
 
