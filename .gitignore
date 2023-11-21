@@ -1,3 +1,7 @@
+*.swp
+game/YahtzeeSim
+test/YahtzeeTest
+
 # Prerequisites
 *.d
 

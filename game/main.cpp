@@ -1,5 +1,7 @@
 #include "Yahtzee.h"
 
+#include <iostream>
+
 
 int main() {
     const int nRerolls = 2; //max number of rerolls allowed
@@ -11,32 +13,33 @@ int main() {
     int gameNum;
     bool fun;
     std::cout << "Which game mode would you like to play?" << std::endl;
-    std::cout << "(1) Standard Yahtzee\n(2)Fun Yahtzee" << std::endl;
+    std::cout << "(1) Standard Yahtzee\n(2) Fun Yahtzee" << std::endl;
     std::cout << "Choose mode: (1/2) ";
-    gameNum << std::cin;
+    std::cin >> gameNum;
     if(gameNum==2) fun=true;
     else fun=false;
 
     //Set up session
-    auto dist = std::uniform_int_distribution(0,6);
+    //auto dist = std::uniform_int_distribution(0,6);
     int winnings = 0;
 
     std::string cont = "y";
     while(cont == "y") {
 
-        Yahtzee game = Yahtzee(dist,fun);
-
-        std::cout << game.printDice();
+        Yahtzee game = Yahtzee(fun);
+        
+        std::cout << "Rolling initial dice..." << std::endl;
+        std::cout << game.printDice() << std::endl;
 
         // ask for rerolls
         std::string reroll;
         for(int r=0; r<nRerolls; ++r) {
             std::cout << "Reroll? (y/n) ";
-            reroll << std::cin;
+            std::cin >> reroll;
             if (reroll=="y") {
-                game.reroll();
-                std::cout << "Current dice: " << std::endl;
-                std::cout << game.printDice();
+                game.reroll(6);
+                std::cout << "Rerolling dice..." << std::endl;
+                std::cout << game.printDice() << std::endl;
             } else {
                 break;
             }
@@ -52,7 +55,7 @@ int main() {
 
         std::cout << "Your total winnings: $" << winnings << std::endl;
         std::cout << "Continue playing? (y/n) ";
-        cont << std::cin;
+        std::cin >> cont;
 
     }
 
