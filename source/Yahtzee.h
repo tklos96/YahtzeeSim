@@ -3,16 +3,17 @@
 
 #include <string>
 #include <vector>
+#include <random>
 
 class Yahtzee {
     public:
         //Constructor
         //Yahtzee(std::uniform_int_distribution dist,
         //        bool const fun);
-        Yahtzee(bool const fun);
+        Yahtzee(bool const fun, std::default_random_engine& gen);
 
         //void setDice(std::vector<int>& const diceIn);
-        void reroll(int const target);
+        void reroll(int const target, std::default_random_engine& gen );
 
         int const payout();
         std::string const printDice();

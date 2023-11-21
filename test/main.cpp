@@ -1,14 +1,17 @@
 #include "Yahtzee.h"
+
 #include <string>
 #include <iostream>
+#include <random>
 
 
 int main() {
-    const int nTrials = 200;
+    const int nTrials = 500;
+    const int nLogSteps = 10;
 
     //Set up session
-    //auto dist = std::uniform_int_distribution(0,6);
-    int winnings = 0;
+    std::random_device rd;
+    std::default_random_engine generator{rd()};
 
     std::vector<int> rollCountsFair(6,0);
     std::vector<int> rollCountsFixed(6,0);
@@ -20,11 +23,12 @@ int main() {
     std::cout << "trials,nYahtzee,nFourOfAKind,winnings\n";
     int l=0;
     int nYahtzee=0, nFourOfAKind=0;
+    int winnings = 0;
     for(int n=0; n<nTrials; ++n) {
 
-        Yahtzee game = Yahtzee(false);
-        game.reroll(6);
-        game.reroll(6);
+        Yahtzee game = Yahtzee(false,generator);
+        game.reroll(6,generator);
+        game.reroll(6,generator);
         int payout = game.payout();
         winnings += payout;
         if(payout==20) nFourOfAKind++;
@@ -34,7 +38,7 @@ int main() {
             rollCountsFair[i] += game.getRollCount(i+1);
         }
 
-        if(n==nTrials-1 or n>= l*nTrials/100) {
+        if(n==nTrials-1 or n>= l*(nTrials/nLogSteps)) {
             l++;
             std::cout << n+1 <<","<< nYahtzee <<","<<nFourOfAKind<<","<<winnings;
             std::cout << "\n";
@@ -51,11 +55,12 @@ int main() {
     std::cout << "trials,nYahtzee,nFourOfAKind,winnings\n";
     int l=0;
     int nYahtzee=0, nFourOfAKind=0;
+    int winnings=0;
     for(int n=0; n<nTrials; ++n) {
 
-        Yahtzee game = Yahtzee(true);
-        game.reroll(6);
-        game.reroll(6);
+        Yahtzee game = Yahtzee(true,generator);
+        game.reroll(6,generator);
+        game.reroll(6,generator);
         int payout = game.payout();
         winnings += payout;
         if(payout==20) nFourOfAKind++;
@@ -65,7 +70,7 @@ int main() {
             rollCountsFixed[i] += game.getRollCount(i+1);
         }
 
-        if(n==nTrials-1 or n>= l*nTrials/100) {
+        if(n==nTrials-1 or n>= l*nTrials/nLogSteps) {
             l++;
             std::cout << n+1 <<","<< nYahtzee <<","<<nFourOfAKind<<","<<winnings;
             std::cout << "\n";

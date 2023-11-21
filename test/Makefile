@@ -2,8 +2,10 @@ BINARYNAME = YahtzeeTest
 
 OBJS = Yahtzee.o main.o
 
-CXXFLAGS = -std=c++20
-LDFLAGS =
+CXXFLAGS = -std=c++20 -I../source
+LDFLAGS = -I../source
+
+vpath %.cpp ../source
 
 ##### Commands
 default: $(BINARYNAME) 
@@ -19,3 +21,4 @@ $(BINARYNAME): $(OBJS)
 
 clean:
 	rm -f *.o
+	rm -f $(BINARYNAME)

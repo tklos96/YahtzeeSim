@@ -1,10 +1,14 @@
 #include "Yahtzee.h"
 
 #include <iostream>
+#include <random>
 
 
 int main() {
     const int nRerolls = 2; //max number of rerolls allowed
+
+    std::random_device rd;
+    std::default_random_engine generator{rd()};
 
     // Print welcome message
     std::cout << "Welcome to YahtzeeSim!" << std::endl;
@@ -26,7 +30,7 @@ int main() {
     std::string cont = "y";
     while(cont == "y") {
 
-        Yahtzee game = Yahtzee(fun);
+        Yahtzee game = Yahtzee(fun,generator);
         
         std::cout << "Rolling initial dice..." << std::endl;
         std::cout << game.printDice() << std::endl;
@@ -37,7 +41,7 @@ int main() {
             std::cout << "Reroll? (y/n) ";
             std::cin >> reroll;
             if (reroll=="y") {
-                game.reroll(6);
+                game.reroll(6,generator);
                 std::cout << "Rerolling dice..." << std::endl;
                 std::cout << game.printDice() << std::endl;
             } else {
