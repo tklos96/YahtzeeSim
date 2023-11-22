@@ -1,6 +1,6 @@
 BINARYNAME = YahtzeeTest
 
-OBJS = Yahtzee.o main.o
+OBJS = Yahtzee.o Logfile.o main.o
 
 CXXFLAGS = -std=c++20 -I../source
 LDFLAGS = -I../source
