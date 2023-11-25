@@ -53,7 +53,7 @@ int main() {
         if (payout>0) {
             std::cout << "Congratulations! You won $" << payout << std::endl;
         } else {
-            std::cout << "Try again next time!" << std::endl;
+            std::cout << "Good luck next time!" << std::endl;
         }
 
         std::cout << "Your total winnings: $" << winnings << std::endl;
