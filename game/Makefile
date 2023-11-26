@@ -2,7 +2,7 @@ BINARYNAME = YahtzeeSim
 
 OBJS = Yahtzee.o main.o
 
-CXXFLAGS = -std=c++20 -I../source
+CXXFLAGS = -std=c++11 -I../source
 LDFLAGS = -I../source
 
 vpath %.cpp ../source

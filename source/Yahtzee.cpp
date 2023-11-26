@@ -8,7 +8,7 @@
 //    : dist_(dist) {
 Yahtzee::Yahtzee(bool const fun,std::default_random_engine& gen) {
 
-    auto dieDist = std::uniform_int_distribution(1,6);
+    auto dieDist = std::uniform_int_distribution<int>(1,6);
     // "Roll" the 5 dice 
     for(int i=0; i<5; ++i) {
         dice_[i] = dieDist(gen);
@@ -16,7 +16,7 @@ Yahtzee::Yahtzee(bool const fun,std::default_random_engine& gen) {
 
     // if fun variant, change a random die result to 6
     if(fun) {
-        auto idxDist = std::uniform_int_distribution(0,4);
+        auto idxDist = std::uniform_int_distribution<int>(0,4);
         int fixIdx = idxDist(gen);
         dice_[fixIdx] = 6;
     }
@@ -30,7 +30,7 @@ Yahtzee::Yahtzee(bool const fun,std::default_random_engine& gen) {
 /** Reroll all dice that are not already equal to the target value
  */
 void Yahtzee::reroll(int const target, std::default_random_engine& gen) {
-    auto dieDist = std::uniform_int_distribution(1,6);
+    auto dieDist = std::uniform_int_distribution<int>(1,6);
     for(int i=0; i<5; ++i) {
         if (dice_[i] != target) {
             dice_[i] = dieDist(gen);
