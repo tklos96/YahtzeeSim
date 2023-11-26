@@ -1,6 +1,7 @@
 *.swp
 game/YahtzeeSim
 test/YahtzeeTest
+test/*.txt
 
 *.DS_Store
 

@@ -5,15 +5,15 @@
 
 
 int main() {
-    const int nRerolls = 2; //max number of rerolls allowed
-
+    // Seed pseudo-random number generator with a non-deterministic
+    // random number from the device.
     std::random_device rd;
     std::default_random_engine generator{rd()};
 
-    // Print welcome message
-    std::cout << "Welcome to YahtzeeSim!" << std::endl;
+    // Print welcome message and game mode select
+    std::cout << "\n==============================\n" << std::endl;
+    std::cout << "Welcome to YahtzeeSim!\n" << std::endl;
 
-    // Game mode select
     int gameNum;
     bool fun;
     std::cout << "Which game mode would you like to play?" << std::endl;
@@ -26,17 +26,19 @@ int main() {
 
     int winnings = 0;
 
+    // Main game loop
     std::string cont = "y";
     while(cont == "y") {
 
+        // Initialize game and do initial rolls
         Yahtzee game = Yahtzee(fun,generator);
         
         std::cout << "Rolling initial dice..." << std::endl;
         std::cout << game.printDice() << std::endl;
 
-        // ask for rerolls
+        // Ask for rerolls, up to 2
         std::string reroll;
-        for(int r=0; r<nRerolls; ++r) {
+        for(int r=0; r<2; ++r) {
             std::cout << "Reroll? (y/n) ";
             std::cin >> reroll;
             if (reroll=="y") {
@@ -48,6 +50,7 @@ int main() {
             }
         }
 
+        // Give player payout depending on results, add to total winnings
         int payout = game.payout();
         winnings += payout;
         if (payout>0) {
@@ -56,6 +59,7 @@ int main() {
             std::cout << "Good luck next time!" << std::endl;
         }
 
+        // Play again if the player wants
         std::cout << "Your total winnings: $" << winnings << std::endl;
         std::cout << "Continue playing? (y/n) ";
         std::cin >> cont;

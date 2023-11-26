@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Class for writing log files
 class Logfile {
     public:
         Logfile(const std::string& filename);
