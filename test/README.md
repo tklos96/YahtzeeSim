@@ -9,7 +9,7 @@ Dice Fairness
 
 Let's say a player wanted to test if the dice were fair in our game. While the simulations run, the logfile tracks the number of times each possible die result (1-6) was rolled. This does not count any dice that are kept between rolls, only the initial dice and rerolls. The results are shown for 10,000 trials in Figure 1.
 
-![Roll Frequencies](img/dieResults.png)
+![Roll Frequencies](img/fig1.png)
 
 We will use a $\chi^2$ goodness-of-fit test to see if the results align with what's expected from fair dice. The critical value with 5 degrees of freedom and $\alpha=0.05$ is $\chi^2_{5,0.95} = 11.070$. By calcuating $\chi^2$ of the outcome distributions for each variant, we get:
 
@@ -31,11 +31,11 @@ Using this [Google Spreadsheet](https://docs.google.com/spreadsheets/d/1O9DeqmWl
 |Fun        |      0.031503|            0.173093|    0.795404|
 
 
-After running the 10,000 trials, the frequencies for each result are plotted in Figure 2. The null result (no payout) is excluded to make the scale more readable.
+After running the 10,000 trials, the frequencies for each result are plotted in Figure 2. The No Payout result is excluded to make the scale more readable.
 
-![Results Graph](img/outcomeResults.png)
+![Results Graph](img/fig2.png)
 
-Upon inspection, we can see the frequencies match very well with the theoretical probabilities. We can calculate the $\chi_2$ variance of each from the expected distributions, getting the following:
+Upon inspection, we can see the frequencies are all within 5\% of theoretical probabilities. We can calculate the $\chi_2$ variance from the expected distributions, getting the following:
 
 $\chi^2_{\text{Std}} = 0.124271$
 
@@ -47,13 +47,13 @@ These are very low, so we definitely cannot reject the hypothesis that the simul
 Average Payout
 ==============
 
-Finally, we can do a qualitative analysis of the average payout. Using the theoretical probabilites in the Spreadsheet we can easily calucate the Expected Payout for each variant:
+Finally, we can do a qualitative analysis of the average payout. Using the theoretical probabilites in the Spreadsheet we can calucate the Expected Payout for each variant:
 
 |  Variant   | Expected Payout per Game |
 |------------|--------------------:|
 |Standard    |               $ 3.13|
 |Fun         |               $ 6.61|
 
-For the same 10,000 trials as in the previous sections, the moving average for Payout is shown in Figure 3. The expected averages are plotted with dashed lines.
+Figure 3 shows the moving average of Payout for the same 10,000 trials as in the previous sections. The expected payouts are plotted with dashed lines. The moving averages do approximately align with the theoretical payouts; however, more trials would be needed to show a tighter convergence.
 
-![Moving Average Graph](img/movingAverage.png)
+![Moving Average Graph](img/fig3.png)
