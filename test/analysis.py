@@ -31,7 +31,7 @@ def plotMovingAverages():
     ax.set_xlabel('Number of trials')
     ax.legend(loc='lower right')
 
-    plt.savefig('img/movingAverage.png')
+    plt.savefig('img/fig3.png')
     #plt.show()
 
 def plotOutcomes():
@@ -58,7 +58,7 @@ def plotOutcomes():
     ax.bar_label(bs, fmt='%.4f')
     ax.bar_label(bf, fmt='%.4f')
 
-    plt.savefig('img/outcomeResults.png')
+    plt.savefig('img/fig2.png')
     #plt.show()
 
     trialsStd = dataStd[-1,0]
@@ -102,7 +102,7 @@ def plotDiceResults():
     ax.set_xlabel('Die result')
     ax.legend(loc='upper left')
 
-    plt.savefig('img/dieResults.png')
+    plt.savefig('img/fig1.png')
     #plt.show()
 
     #Calculate Chi-squared metric for both distributions
